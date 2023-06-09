@@ -1,0 +1,353 @@
+﻿@model IEnumerable<Mbbs2.Models.ApplicantsMbb>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.AplicantName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Dob)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PermanentState)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PermanentDistrict)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PermanentBlock)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PermanentVillage)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PermanentAddress)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PresentState)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PresentDistrict)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PresentBlock)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PresentVillage)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PresentAddress)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EMail)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Mobile)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nationality)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Category)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Gender)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Religion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PassportPhoto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PrCetificate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CategoryCertificate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AgeProof)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Marksheet)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CharacterCertificate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GuardianName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GuardianOccupation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GuardianOfficeName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GuardianOfficeAddress)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GuardianEmployerCertificate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MarksPhysicsTheory)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MarksPhysicsPractical)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FullmarksPhysics)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MarksChemistryTheory)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MarksChemistryPractical)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FullmarksChemistry)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MarksBiologyTheory)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MarksBiologyPractical)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FullmarksBiology)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MarksEnglishTheory)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MarksEnglishPractical)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FullmarksEnglish)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PercentageXii)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PercentagePcbXii)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PercentagePcbeXii)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NeetUgCurrentScore)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NeetUgScoresheet)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ApplicationStatus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Remarks)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataEntryTimestamp)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataEntryIp)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ModifiedBy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ModifiedTimestamp)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ModifiedIp)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AgeAsOnCutOffDate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.AplicantName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Dob)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PermanentState)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PermanentDistrict)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PermanentBlock)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PermanentVillage)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PermanentAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PresentState)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PresentDistrict)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PresentBlock)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PresentVillage)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PresentAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EMail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Mobile)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nationality)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Category)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Gender)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Religion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PassportPhoto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PrCetificate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CategoryCertificate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AgeProof)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Marksheet)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CharacterCertificate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GuardianName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GuardianOccupation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GuardianOfficeName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GuardianOfficeAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GuardianEmployerCertificate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MarksPhysicsTheory)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MarksPhysicsPractical)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FullmarksPhysics)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MarksChemistryTheory)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MarksChemistryPractical)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FullmarksChemistry)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MarksBiologyTheory)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MarksBiologyPractical)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FullmarksBiology)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MarksEnglishTheory)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MarksEnglishPractical)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FullmarksEnglish)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PercentageXii)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PercentagePcbXii)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PercentagePcbeXii)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NeetUgCurrentScore)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NeetUgScoresheet)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ApplicationStatus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Remarks)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataEntryTimestamp)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataEntryIp)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ModifiedBy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ModifiedTimestamp)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ModifiedIp)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AgeAsOnCutOffDate)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ApplicantId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ApplicantId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ApplicantId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

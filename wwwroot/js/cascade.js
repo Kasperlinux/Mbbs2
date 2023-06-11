@@ -208,12 +208,13 @@ function autoFillAddress() {
         //$('#PreDistrict').attr('disabled', false);
         //$('#PreBlock').attr('disabled', false);
         //$('#PreVillage').attr('disabled', false);
+        toggleAddressDiv();
 
-        let PerStateVal = PerState.value;
-        let PerDistrictVal = PerDistrict.value;
-        let PerBlockVal = PerBlock.value;
-        let PerVillageVal = PerVillage.value;
-        let PermanentAddressVal = PermanentAddress.value;
+        let PerStateVal = PerState.option;
+        let PerDistrictVal = PerDistrict.option;
+        let PerBlockVal = PerBlock.option;
+        let PerVillageVal = PerVillage.option;
+        let PermanentAddressVal = PermanentAddress.option;
 
         PreState.value = PerStateVal;
 
@@ -225,6 +226,20 @@ function autoFillAddress() {
         //$('#PreDistrict').attr('disabled', true);
         //$('#PreBlock').attr('disabled', true);
         //$('#PreVillage').attr('disabled', true);
+    }
+}
+function toggleAddressDiv() {
+    var checkbox = document.getElementById("checkBox");
+    var originalDiv = document.getElementById("originalDiv");
+    var hideDiv = document.getElementById("hideDiv");
+
+    if (checkbox.checked) {
+        alert("Checked")
+        originalDiv.style.display = "none";
+        hideDiv.style.display = "block";
+    } else {
+        originalDiv.style.display = "block";
+        hideDiv.style.display = "none";
     }
 }
 function category() {

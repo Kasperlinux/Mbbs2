@@ -35,7 +35,7 @@
             <div class="row">
                 <div class="col-md-5">
                     <div class="form-group">
-                        <label asp-for="Dob" class="control-label"></label>
+                        <label asp-for="Dob" class="control-label"> DOB (mm/dd/yyy)</label>
                         <input type="date" asp-for="Dob" class="form-control" min="1990-01-01" max="2008-12-31" />
                         <span asp-validation-for="Dob" class="text-danger"></span>
                     </div>
@@ -130,30 +130,30 @@
                 <div class="col-md-5">
                     <h4>Physics</h4>
                     <label asp-for="MarksPhysicsTheory" class="control-label">Physics Theory Marks</label>
-                    <input type="number" asp-for="MarksPhysicsTheory" class="form-control" />
+                    <input id="MarksPhysicsTheory" type="number" asp-for="MarksPhysicsTheory" class="form-control" />
                     <span asp-validation-for="MarksPhysicsTheory" class="text-danger"></span>
 
                     <label asp-for="MarksPhysicsPractical" class="control-label">Physics Practical Marks</label>
-                    <input type="number" asp-for="MarksPhysicsPractical" class="form-control" />
+                    <input id="MarksPhysicsPractical" type="number" asp-for="MarksPhysicsPractical" class="form-control" />
                     <span asp-validation-for="MarksPhysicsPractical" class="text-danger"></span>
 
                     <label asp-for="FullmarksPhysics" class="control-label">Physics Full Marks</label>
-                    <input type="number" asp-for="FullmarksPhysics" class="form-control" />
+                    <input id="FullmarksPhysics" type="number" asp-for="FullmarksPhysics" class="form-control" readonly/>
                     <span asp-validation-for="FullmarksPhysics" class="text-danger"></span>
                 </div>
 
                 <div class="col-md-5">
                     <h4>Chemistry</h4>
                     <label asp-for="MarksChemistryTheory" class="control-label">Chemistry Theory Marks</label>
-                    <input type="number" asp-for="MarksChemistryTheory" class="form-control" />
+                    <input id="MarksChemistryTheory" type="number" asp-for="MarksChemistryTheory" class="form-control" />
                     <span asp-validation-for="MarksChemistryTheory" class="text-danger"></span>
 
                     <label asp-for="MarksChemistryPractical" class="control-label">Chemistry Practical Marks</label>
-                    <input type="number" asp-for="MarksChemistryPractical" class="form-control" />
+                    <input id="MarksChemistryPractical" type="number" asp-for="MarksChemistryPractical" class="form-control" />
                     <span asp-validation-for="MarksChemistryPractical" class="text-danger"></span>
 
                     <label asp-for="FullmarksChemistry" class="control-label">Chemistry Full Marks</label>
-                    <input type="number" asp-for="FullmarksChemistry" class="form-control" />
+                    <input type="number" asp-for="FullmarksChemistry" class="form-control" readonly />
                     <span asp-validation-for="FullmarksChemistry" class="text-danger"></span>
                 </div>
             </div>
@@ -162,15 +162,15 @@
                     <div class="form-group">
                         <h4>Biology</h4>
                         <label asp-for="MarksBiologyTheory" class="control-label">Biology Theory Marks</label>
-                        <input type="number" asp-for="MarksBiologyTheory" class="form-control" />
+                        <input id="MarksBiologyTheory" type="number" asp-for="MarksBiologyTheory" class="form-control" />
                         <span asp-validation-for="MarksBiologyTheory" class="text-danger"></span>
 
                         <label asp-for="MarksBiologyPractical" class="control-label">Biology Practical Marks</label>
-                        <input type="number" asp-for="MarksBiologyPractical" class="form-control" />
+                        <input id="MarksBiologyPractical" type="number" asp-for="MarksBiologyPractical" class="form-control" />
                         <span asp-validation-for="MarksBiologyPractical" class="text-danger"></span>
 
                         <label asp-for="FullmarksBiology" class="control-label">Biology Full Marks</label>
-                        <input type="number" asp-for="FullmarksBiology" class="form-control" />
+                        <input type="number" asp-for="FullmarksBiology" class="form-control" readonly />
                         <span asp-validation-for="FullmarksBiology" class="text-danger"></span>
                     </div>
                 </div>
@@ -179,14 +179,15 @@
                     <div class="form-group">
                         <h4>English</h4>
                         <label asp-for="MarksEnglishTheory" class="control-label">English Theory Marks</label>
-                        <input type="number" asp-for="MarksEnglishTheory" class="form-control" />
+                        <input id="MarksEnglishTheory" type="number" asp-for="MarksEnglishTheory" class="form-control" />
                         <span asp-validation-for="MarksEnglishTheory" class="text-danger"></span>
 
                         <label asp-for="MarksEnglishPractical" class="control-label">English Pratical Marks</label>
-                        <input type="number" asp-for="MarksEnglishPractical" class="form-control" />
+                        <input id="MarksEnglishPractical" type="number" asp-for="MarksEnglishPractical" class="form-control" />
                         <span asp-validation-for="MarksEnglishPractical" class="text-danger"></span>
+
                         <label asp-for="FullmarksEnglish" class="control-label">English Full Marks</label>
-                        <input type="number" asp-for="FullmarksEnglish" class="form-control" />
+                        <input type="number" asp-for="FullmarksEnglish" class="form-control" readonly />
                         <span asp-validation-for="FullmarksEnglish" class="text-danger"></span>
                     </div>
                 </div>
@@ -413,9 +414,80 @@
 
 <div>
 </div>
+@section scripts{
+  
+
+    <script>
+        $(document).ready(function () {
+            // Function to update FullmarksPhysics field
+            function updateFullmarksPhysics() {
+               
+                var marksTheory = parseFloat($("#MarksPhysicsTheory").val());
+                var marksPractical = parseFloat($("#MarksPhysicsPractical").val());
+
+                // Check if both marks have been filled
+                if (!isNaN(marksTheory) && !isNaN(marksPractical)) {
+                    var fullMarks = marksTheory + marksPractical;
+                    $("#FullmarksPhysics").val(fullMarks);
+                }
+            }
+            function updateFullmarksChemistry() {
+
+                var marksTheory = parseFloat($("#MarksChemistryTheory").val());
+                var marksPractical = parseFloat($("#MarksChemistryPractical").val());
+
+                // Check if both marks have been filled
+                if (!isNaN(marksTheory) && !isNaN(marksPractical)) {
+                    var fullMarks = marksTheory + marksPractical;
+                    $("#FullmarksChemistry").val(fullMarks);
+                }
+            }
+            function updateFullmarksBiology() {
+
+                var marksTheory = parseFloat($("#MarksBiologyTheory").val());
+                var marksPractical = parseFloat($("#MarksBiologyPractical").val());
+
+                // Check if both marks have been filled
+                if (!isNaN(marksTheory) && !isNaN(marksPractical)) {
+                    var fullMarks = marksTheory + marksPractical;
+                    $("#FullmarksBiology").val(fullMarks);
+                }
+            }
+            function updateFullmarksEnglish() {
+
+                var marksTheory = parseFloat($("#MarksEnglishTheory").val());
+                var marksPractical = parseFloat($("#MarksEnglishPractical").val());
+
+                // Check if both marks have been filled
+                if (!isNaN(marksTheory) && !isNaN(marksPractical)) {
+                    var fullMarks = marksTheory + marksPractical;
+                    $("#FullmarksEnglish").val(fullMarks);
+                }
+            }
+
+            // Event handler for MarksPhysicsTheory and MarksPhysicsPractical fields
+            $("#MarksPhysicsTheory, #MarksPhysicsPractical").on("input", function () {
+                
+                updateFullmarksPhysics();
+            });
+            $("#MarksChemistryTheory, #MarksChemistryPractical").on("input", function () {
+
+                updateFullmarksChemistry();
+            });
+            $("#MarksBiologyTheory, #MarksBiologyPractical").on("input", function () {
+
+                updateFullmarksBiology();
+            });
+            $("#MarksEnglishTheory, #MarksEnglishPractical").on("input", function () {
+
+                updateFullmarksEnglish();
+            });
+        });
+    </script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/js/cascade.js"></script>
+}
 
 
-<script src="~/lib/jquery/dist/jquery.min.js"></script>
-<script src="~/lib/jquery/dist/jquery.js"></script>
-<script src="~/js/cascade.js"></script>
 

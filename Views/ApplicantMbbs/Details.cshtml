@@ -37,7 +37,7 @@
         <div class="col-md-4">
         <p><strong>Nationality: </strong><input class="borderless-input" type="text" id="Nationality" value="@Model.Nationality" readonly /></p>
         <p><strong>Religion:  </strong><input class="borderless-input" id="Religion" value="@Model.Religion" readonly /></p>
-        <p><strong>DOB:  </strong> @Model.Dob</p>
+        <p><strong>DOB:  </strong>  @string.Format("{0:MM/dd/yyyy}", Model.Dob)</p>
         <p><strong>Category: </strong><input class="borderless-input" id="Category" value="@Model.Category" readonly /></p>
         </div>
 
@@ -175,7 +175,7 @@
         <h3>Application Status</h3>
         <div class="form-group ">
             <span asp-validation-for="ApplicationStatus" class="text-danger"></span>
-            <select asp-for="ApplicationStatus" class="form-control" id="Status">
+                <select name="appStatus" asp-for="ApplicationStatus" class="form-control" id="Status">
                 <option selected disabled>Application Status</option>
             </select>
         </div>
@@ -183,7 +183,7 @@
     <div class="col-md-4 offset-2">
         <h3>Application Remark</h3>
         <div class="form-group">
-            <input asp-for="Remarks" class="form-control" placeholder="Write a Remark for the Applicant"/>
+                <input name="remarks" asp-for="Remarks" class="form-control" placeholder="Write a Remark for the Applicant" />
             <span asp-validation-for="Remarks" class="text-danger"></span>
         </div>
     </div>
@@ -195,14 +195,11 @@
     
 <div class="row">
     <div class="form-group offset-4">
-        <input type="submit" value="Submit Form" class="btn btn-primary" />
+          <input type="submit" asp-route-id="@Model.ApplicantId" value="Submit Form" class="btn btn-primary" />
     </div>
 </div>
 </form>
 
-<div class="row">
-    <a asp-action="Edit" asp-route-id="@Model?.ApplicantId">Edit</a> | <a asp-action="Index">Back to List</a>
-</div>
 
 
 @section scripts{

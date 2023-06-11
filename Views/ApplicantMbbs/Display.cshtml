@@ -31,7 +31,7 @@
             {
                 <tr>
                     <td id="AppId">@applicant.ApplicantId</td>
-                    <td><img src="data:image/png;base64,@System.Convert.ToBase64String(applicant.PassportPhoto)" width="70" height="70" /></td>
+                    <td><img src="data:image/png;base64,@System.Convert.ToBase64String(@applicant.PassportPhoto)" width="70" height="70" /></td>
                     <td>@applicant.AplicantName</td>
                     <td>@applicant.AgeAsOnCutOffDate</td>
                     <td>@applicant.Gender</td>

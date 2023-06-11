@@ -266,38 +266,19 @@ namespace Mbbs2.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Details(int? id, [Bind("Remark,ApplicationStatus")] ApplicantsMbb applicantsMbb)
+        public IActionResult Details(int id,int appStatus , string remarks)
         {
-            if (id!=applicantsMbb.ApplicantId)
-            {
-                return NotFound();
-            }
 
-            if (ModelState.IsValid)
-            {
-                context.Update(applicantsMbb);
-                await context.SaveChangesAsync();
+            var existingApplicant = context.ApplicantsMbbs.FirstOrDefault(a => a.ApplicantId == id);
+            existingApplicant.Remarks = remarks;
+            existingApplicant.ApplicationStatus = appStatus;
 
-                //try
-                //{
-                //    context.Update(applicantsMbb);
-                //    await context.SaveChangesAsync();
-                //}
-                //catch (DbUpdateConcurrencyException)
-                //{
-                //    if (!ApplicantsMbbExists(applicantsMbb.ApplicantId))
-                //    {
-                //        return NotFound();
-                //    }
-                //    else
-                //    {
-                //        throw;
-                //    }
-                //}
+            //existingApplicant.Remarks = "Via Hard Code";
+            //existingApplicant.ApplicationStatus = 1;
 
-                return RedirectToAction("Display");
-            }
-            return View("Display");
+            context.Update(existingApplicant);
+            context.SaveChanges(); 
+            return RedirectToAction("Display");     
         }
 
 

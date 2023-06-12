@@ -132,8 +132,16 @@
     </div>
     <div class="col-md-6 ">
         <p><strong> Guardian Employer Certificate </strong></p>
-        <img src="data:image/png;base64,@System.Convert.ToBase64String(Model.GuardianEmployerCertificate)" width="200" height="200" onclick="openFullscreen(this)" />
-        <a href="data:image/png;base64,@System.Convert.ToBase64String(Model.GuardianEmployerCertificate)" download="EmpCerti.png"><i class="fas fa-download"></i></a>
+            @if (Model.GuardianEmployerCertificate != null)
+            {
+                <img src="data:image/png;base64,@System.Convert.ToBase64String(Model.GuardianEmployerCertificate)" width="200" height="200" onclick="openFullscreen(this)" />
+                <a href="data:image/png;base64,@System.Convert.ToBase64String(Model.GuardianEmployerCertificate)" download="EmpCerti.png"><i class="fas fa-download"></i></a>
+            }
+            else
+            {
+                <img src="data:image/png;base64,@(Model.GuardianEmployerCertificate != null ? System.Convert.ToBase64String(Model.GuardianEmployerCertificate) : "~/images/placeholder.png")" width="200" height="200" onclick="openFullscreen(this)" />
+                <span>No certificate available</span>
+            }
     </div>
 </div>
 
@@ -146,13 +154,23 @@
 <div class="row offset-2">
     <div class="col-md-6">
         <p><strong>Age proof</strong></p>
-        <img src="data:image/png;base64,@System.Convert.ToBase64String(Model.AgeProof)" width="200" height="200" onclick="openFullscreen(this)" />
-        <a href="data:image/png;base64,@System.Convert.ToBase64String(Model.AgeProof)" download="PrCetificate.png"><i class="fas fa-download"></i></a>
+            @if (Model.AgeProof != null)
+            {
+                <img src="data:image/png;base64,@System.Convert.ToBase64String(Model.AgeProof)" width="200" height="200" onclick="openFullscreen(this)" />
+                <a href="data:image/png;base64,@System.Convert.ToBase64String(Model.AgeProof)" download="PrCetificate.png"><i class="fas fa-download"></i></a>
+            }
+            else
+            {
+                <img  src="data:image/png;base64,@(Model.AgeProof != null ? System.Convert.ToBase64String(Model.AgeProof) : "~/images/placeholder.png")" width="200" height="200" onclick="openFullscreen(this)" />
+                <span>No certificate available</span>
+            }
     </div>
     <div class="col-md-6">
         <p><strong>Marksheet</strong></p>
         <img src="data:image/png;base64,@System.Convert.ToBase64String(Model.Marksheet)" width="200" height="200" onclick="openFullscreen(this)" />
         <a href="data:image/png;base64,@System.Convert.ToBase64String(Model.Marksheet)" download="Marksheet.png"><i class="fas fa-download"></i></a>
+        
+
     </div>
 </div>
 <hr>
@@ -164,8 +182,16 @@
     </div>
     <div class="col-md-6">
         <p><strong>Category Certificate</strong></p>
-        <img src="data:image/png;base64,@System.Convert.ToBase64String(Model.CategoryCertificate)" width="200" height="200" onclick="openFullscreen(this)" />
-        <a href="data:image/png;base64,@System.Convert.ToBase64String(Model.CategoryCertificate)" download="CategoryCertificate.png"><i class="fas fa-download"></i></a>
+            @if (Model.CategoryCertificate != null)
+            {
+                <img src="data:image/png;base64,@System.Convert.ToBase64String(Model.CategoryCertificate)" width="200" height="200" onclick="openFullscreen(this)" />
+                <a href="data:image/png;base64,@System.Convert.ToBase64String(Model.CategoryCertificate)" download="CategoryCertificate.png"><i class="fas fa-download"></i></a>
+            }
+            else
+            {
+                <img src="~/images/placeholder.png" width="200" height="200" />
+                <span>No certificate available</span>
+            }
     </div>
 </div>
 <hr>

@@ -230,13 +230,19 @@ namespace Mbbs2.Controllers
                 return View(model);
             }
         }
-        public byte[] ConvertImageToByteArray(IFormFile imageFile)
+        public byte[]? ConvertImageToByteArray(IFormFile imageFile)
         {
-            using (var stream = new MemoryStream())
+            if(imageFile !=null)
             {
+                using var stream = new MemoryStream();
                 imageFile.CopyTo(stream);
                 return stream.ToArray();
             }
+            else
+            {
+                return null;
+            }
+           
         }
 
 

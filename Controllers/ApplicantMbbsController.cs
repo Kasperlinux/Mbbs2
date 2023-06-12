@@ -31,6 +31,7 @@ namespace Mbbs2.Controllers
             var dt = context.MDistricts.Where(e => e.StateCode==id).ToList();
             return new JsonResult(dt);
         }
+        
 
         public JsonResult Block(int id)
         {

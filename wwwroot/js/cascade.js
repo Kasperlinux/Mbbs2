@@ -1,5 +1,5 @@
 ﻿$(document).ready(function () {
-    alert("Working");
+    
 
     GetState();
     GetNationality();
@@ -197,44 +197,116 @@ function autoFillAddress() {
     let PerVillage = document.getElementById('PerVillage');
     let PermanentAddress = document.getElementById('PermanentAddress');
 
-    let PreState = document.getElementById('PreState');
-    let PreDistrict = document.getElementById('PreDistrict');
-    let PreBlock = document.getElementById('PreBlock');
-    let PreVillage = document.getElementById('PreVillage');
-    let PresentAddress = document.getElementById('PresentAddress');
+    let SameState = document.getElementById('SameState');
+    let SameDistrict = document.getElementById('SameDistrict');
+    let SameBlock = document.getElementById('SameBlock');
+    let SameVillage = document.getElementById('SameVillage');
+    let SameAddress = document.getElementById('SameAddress');
 
     if (checkBox.checked == true) {
 
-        //$('#PreDistrict').attr('disabled', false);
-        //$('#PreBlock').attr('disabled', false);
-        //$('#PreVillage').attr('disabled', false);
+
         toggleAddressDiv();
 
-        let PerStateVal = PerState.option;
-        let PerDistrictVal = PerDistrict.option;
-        let PerBlockVal = PerBlock.option;
-        let PerVillageVal = PerVillage.option;
-        let PermanentAddressVal = PermanentAddress.option;
+        let PerStateVal = PerState.value;
+        let PerDistrictVal = PerDistrict.value;
+        let PerBlockVal = PerBlock.value;
+        let PerVillageVal = PerVillage.value;
+        let PermanentAddressVal = PermanentAddress.value;
 
-        PreState.value = PerStateVal;
+        SameState.value = PerStateVal;
 
-        PreDistrict.value = PerDistrictVal;
-        PreBlock.value = PerBlockVal;
-        PreVillage.value = PerVillageVal;
-        PresentAddress.value = PermanentAddressVal;
-    } else {
-        //$('#PreDistrict').attr('disabled', true);
-        //$('#PreBlock').attr('disabled', true);
-        //$('#PreVillage').attr('disabled', true);
+        SameDistrict.value = PerDistrictVal;
+        SameBlock.value = PerBlockVal;
+        SameVillage.value = PerVillageVal;
+        SameAddress.value = PermanentAddressVal;;
+        InputState();
+        InputDistrict();
+        InputBlock();
+        InputVillage();
+        SameAddress.value = PermanentAddressVal;
+
+
+
     }
+    else {
+        toggleAddressDiv();
+    }
+    
 }
+function InputState() {
+    let SameState = document.getElementById('SameState');
+    
+    $.ajax({
+        url: '/ApplicantMbbs/State',
+        success: function (result) {
+            
+            var filteredData = result.filter(function (data) {               
+                return data.stateCode == SameState.value;
+            });           
+            $.each(filteredData, function (i, data) {               
+                SameState.value = data.stateName;
+            });
+        }
+    });
+}
+function InputDistrict() {
+    let SameDistrict = document.getElementById('SameDistrict');
+    let id = SameDistrict.value; 
+    $.ajax({
+        url: '/ApplicantMbbs/GetDistrictName?id='+id,
+        success: function (result) {
+            
+            var filteredData = result.filter(function (data) {
+                return data.districtCode == id;
+            });
+            
+            $.each(filteredData, function (i, data) {
+                SameDistrict.value = data.districtName;
+            });
+        }
+    });
+}
+function InputBlock() {
+    let SameBlock = document.getElementById('SameBlock');
+    let id = SameBlock.value;
+    $.ajax({
+        url: '/ApplicantMbbs/GetBlockName?id='+id,
+        success: function (result) {
+
+            var filteredData = result.filter(function (data) {
+                return data.blockCode == id;
+            });
+            $.each(filteredData, function (i, data) {
+                SameBlock.value = data.blockName;
+            });
+        }
+    });
+}
+function InputVillage() {
+    let SameVillage = document.getElementById('SameVillage');
+    let id = SameVillage.value;
+    $.ajax({
+        url: '/ApplicantMbbs/GetVillageName?id='+id,
+        success: function (result) {
+
+            var filteredData = result.filter(function (data) {
+                return data.villageCode == id;
+            });
+            $.each(filteredData, function (i, data) {
+                SameVillage.value = data.villageName;
+            });
+        }
+    });
+}
+
 function toggleAddressDiv() {
     var checkbox = document.getElementById("checkBox");
     var originalDiv = document.getElementById("originalDiv");
     var hideDiv = document.getElementById("hideDiv");
 
     if (checkbox.checked) {
-        alert("Checked")
+      
         originalDiv.style.display = "none";
         hideDiv.style.display = "block";
     } else {

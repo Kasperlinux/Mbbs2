@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using Mbbs2.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace Mbbs2.Data;
 
-public partial class DhsMagacousesContext : DbContext
+public partial class DhsMagacousesContext : IdentityDbContext
 {
     public DhsMagacousesContext()
     {
@@ -180,6 +181,7 @@ public partial class DhsMagacousesContext : DbContext
         });
 
         OnModelCreatingPartial(modelBuilder);
+        base.OnModelCreating(modelBuilder);
     }
 
     partial void OnModelCreatingPartial(ModelBuilder modelBuilder);

@@ -4,6 +4,7 @@ using Mbbs2.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Mbbs2.Controllers
 {
@@ -247,6 +248,7 @@ namespace Mbbs2.Controllers
 
 
         //Original
+        [Authorize(Roles ="Admin")]
         public IActionResult Display()
         {
             var applicants = context.ApplicantsMbbs.ToList();

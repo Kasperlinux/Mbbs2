@@ -50,6 +50,9 @@
                         <i class="fas fa-th-large"></i>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <partial name="_LoginPartial"/>
+                </li>
             </ul>
         </nav>
         <!-- /.navbar -->
@@ -153,9 +156,36 @@
                                         <p>jsGrid</p>
                                     </a>
                                 </li>
-                            </ul>
+                            </ul>  
                         </li>
-                        <li class="nav-header">EXAMPLES</li>
+                        @if (this.User.IsInRole("Admin"))
+                        {
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                    <i class="nav-icon fas fa-edit"></i>
+                                    <p>
+                                        User Management
+                                        <i class="fas fa-angle-left right"></i>
+                                    </p>
+                                </a>
+                                <ul class="nav nav-treeview">
+                                    <li class="nav-item">
+                                        <a href="~/FrontEnd/pages/forms/general.html" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Create Role</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="~/FrontEnd/pages/forms/advanced.html" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Create User</p>
+                                        </a>
+                                    </li>
+
+                                </ul>
+                            </li>
+                        }
+                        
                         
                     </ul>
                 </nav>

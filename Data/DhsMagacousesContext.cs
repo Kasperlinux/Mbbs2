@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Mbbs2.Models;
+using Mbbs2.Models.Domain;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
@@ -65,7 +66,9 @@ public partial class DhsMagacousesContext : IdentityDbContext
 
     public virtual DbSet<Session> Sessions { get; set; }
 
-   
+    public virtual DbSet<DHS> DHSs { get; set; }
+
+
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

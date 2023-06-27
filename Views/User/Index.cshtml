@@ -1,0 +1,29 @@
+﻿@model List<Mbbs2.Models.Domain.DHS>
+
+<h1>Users</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Contact</th>
+            <th>Email</th>
+            <th>Password</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var d in Model)
+        {
+            <tr>
+                <th>@d.Id</th>
+                <th>@d.Name</th>
+                <th>@d.Contact</th>
+                <th>@d.Email</th>
+                <th>@d.Password</th>
+                <th><a href="User/View/@d.Id">View</a></th>
+            </tr>
+        }
+    </tbody>
+</table>
+

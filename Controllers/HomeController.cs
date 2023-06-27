@@ -18,7 +18,16 @@ namespace Mbbs2.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        public IActionResult ContactUs()
+        {
+            return View();
+        }
+        public IActionResult AboutUs()
+        {
+            return View();
+        }
+
+        public IActionResult Admin()
         {
             return View();
         }

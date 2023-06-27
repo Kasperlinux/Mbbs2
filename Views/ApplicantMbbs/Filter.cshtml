@@ -1,0 +1,47 @@
+﻿@*@model List<ApplicantsMbb>
+
+
+<h2>Filtered Applicants</h2>
+
+@using (Html.BeginForm("Index", "YourControllerName", FormMethod.Get))
+{
+    <div>
+        @Html.LabelFor(m => m.Category)
+        @Html.DropDownListFor(m => m.Category, new SelectList(Model.Select(a => a.Category).Distinct()), "-- Select Category --")
+    </div>
+
+    <div>
+        @Html.LabelFor(m => m.Nationality)
+        @Html.DropDownListFor(m => m.Nationality, new SelectList(Model.Select(a => a.Nationality).Distinct()), "-- Select Nationality --")
+    </div>
+
+    <div>
+        @Html.LabelFor(m => m.Dob)
+        @Html.TextBoxFor(m => m.Dob, new { type = "date" })
+    </div>
+
+    <!-- Add additional filter criteria fields as needed -->
+
+    <button type="submit">Filter</button>
+}
+
+<table>
+    <thead>
+        <tr>
+            <th>Applicant Name</th>
+            <th>Date of Birth</th>
+            <!-- Add other table headers for the desired properties -->
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.AplicantName</td>
+                <td>@item.Dob</td>
+                <!-- Add other table cells for the desired properties -->
+            </tr>
+        }
+    </tbody>
+</table>
+*@

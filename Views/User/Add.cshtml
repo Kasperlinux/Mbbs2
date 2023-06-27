@@ -1,0 +1,21 @@
+﻿@model Mbbs2.Models.DhsViewModel;
+<h1>ADD DHS</h1>
+<form method="post" action="Add" class="mt-5">
+    <div class="mb-3">
+        <label for="" class="form-label">Name</label>
+        <input type="text" class="form-control" asp-for="Name" />
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label" asp-for="Contact"></label>
+        <input type="text" class="form-control" asp-for="Contact" />
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label">Email</label>
+        <input type="text" class="form-control" asp-for="Email" />
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label">Password</label>
+        <input type="text" class="form-control" asp-for="Password" />
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
